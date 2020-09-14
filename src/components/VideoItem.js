@@ -1,9 +1,9 @@
 import "./VideoItem.css";
 import React from "react";
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, onVideoSelect }) => {
   return (
-    <div className="video-item">
+    <div onClick={() => onVideoSelect(video)} className="video-item">
       <div className="card mb-3">
         <div className="row no-gutters">
           <div className="col-md-4">
