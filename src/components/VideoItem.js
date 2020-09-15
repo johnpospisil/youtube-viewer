@@ -16,7 +16,7 @@ const VideoItem = ({ video, onVideoSelect }) => {
           <div className="col-md-8">
             <div className="card-body">
               <h5 className="card-title">{video.snippet.title}</h5>
-              <p className="card-text">{video.snippet.description}</p>
+              {/* <p className="card-text">{video.snippet.description}</p> */}
               <p className="card-text">
                 <small className="text-muted">
                   Published: {video.snippet.publishedAt}

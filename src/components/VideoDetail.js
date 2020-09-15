@@ -19,6 +19,11 @@ const VideoDetail = ({ video }) => {
       </div>
       <h4>{video.snippet.title}</h4>
       <p>{video.snippet.description}</p>
+      <p className="card-text">
+        <small className="text-muted">
+          Published: {video.snippet.publishedAt}
+        </small>
+      </p>
     </div>
   );
 };
