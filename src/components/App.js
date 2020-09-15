@@ -7,15 +7,21 @@ import VideoDetail from "./VideoDetail";
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
+  componentDidMount() {
+    this.onTermSubmit("news");
+  }
+
   onTermSubmit = async (term) => {
     const response = await youtube.get("/search", {
       params: {
         q: term,
       },
     });
-    // Set the list of videos as 'state'.
-    // console.log(response);
-    this.setState({ videos: response.data.items });
+
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
@@ -26,13 +32,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <SearchBar onFormSubmit={this.onTermSubmit} />I have{" "}
-        {this.state.videos.length} videos.
+        <SearchBar onFormSubmit={this.onTermSubmit} />
+        {/* I have{" "} {this.state.videos.length} videos. */}
         <div className="row">
-          <div className="col-8">
+          <div className="col-lg-8">
             <VideoDetail video={this.state.selectedVideo} />
           </div>
-          <div className="col-4">
+          <div className="col-lg-4">
             <VideoList
               onVideoSelect={this.onVideoSelect}
               videos={this.state.videos}
